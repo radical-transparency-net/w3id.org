@@ -1,0 +1,14 @@
+# # /rt/
+#
+# Permanent identifiers for the Radical Transparency Network.
+# https://w3id.org/rt/ redirects to https://radical-transparency.net/
+# Sub-namespaces under /rt/ns/* are configured in ./ns/.htaccess.
+#
+# ## Contacts
+# - Marc Portier <marc.portier@vliz.be> (GitHub: marc-portier, ORCID: 0000-0002-9648-6484)
+# - Cedric Decruw (GitHub: cedricd, ORCID: 0000-0001-6387-5988)
+
+RewriteEngine on
+
+# Root /rt/ redirects to the Radical Transparency homepage
+RewriteRule ^$ https://radical-transparency.net/ [R=302,L]

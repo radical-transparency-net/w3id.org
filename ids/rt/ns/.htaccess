@@ -1,0 +1,45 @@
+# # /rt/ns/
+#
+# Permanent RDF vocabulary namespaces for the Radical Transparency Network.
+# https://w3id.org/rt/ns/weblink resolves to the rtwl: Web Linking Vocabulary
+# with HTTP content negotiation and RT-P03 Linkset discovery headers.
+#
+# ## Contacts
+# - Marc Portier <marc.portier@vliz.be> (GitHub: marc-portier, ORCID: 0000-0002-9648-6484)
+# - Cedric Decruw (GitHub: cedricd, ORCID: 0000-0001-6387-5988)
+
+RewriteEngine on
+
+# RT-P03 (Content Negotiation Menu): expose variant-menu linksets
+# Scoped strictly to /rt/ns/weblink and its explicit format extensions
+<If "%{REQUEST_URI} =~ m|^/rt/ns/weblink(\.(ttl|jsonld|html|linkset(\.json)?))?/?$|">
+  Header always add Link '<https://w3id.org/rt/ns/weblink.linkset.json>; rel="linkset"; type="application/linkset+json"'
+  Header always add Link '<https://w3id.org/rt/ns/weblink.linkset>; rel="linkset"; type="application/linkset"'
+</If>
+
+# Vary on Accept strictly for the content-negotiated /rt/ns/weblink URI
+<If "%{REQUEST_URI} =~ m|^/rt/ns/weblink/?$|">
+  Header always merge Vary "Accept"
+</If>
+
+# Explicit format extensions for /rt/ns/weblink
+RewriteRule ^weblink\.ttl$ https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.ttl [R=303,L]
+RewriteRule ^weblink\.jsonld$ https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.jsonld [R=303,L]
+RewriteRule ^weblink\.linkset\.json$ https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.linkset.json [R=303,L]
+RewriteRule ^weblink\.linkset$ https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.linkset [R=303,L]
+RewriteRule ^weblink\.html$ https://radical-transparency-net.github.io/semantic-assets/weblink/index.html [R=303,L]
+
+# Content negotiation for /rt/ns/weblink (most specific Accept first, HTML default last)
+RewriteCond %{HTTP_ACCEPT} application/linkset\+json
+RewriteRule ^weblink/?$ https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.linkset.json [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} application/linkset
+RewriteRule ^weblink/?$ https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.linkset [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^weblink/?$ https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.ttl [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} application/ld\+json
+RewriteRule ^weblink/?$ https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.jsonld [R=303,L]
+
+RewriteRule ^weblink/?$ https://radical-transparency-net.github.io/semantic-assets/weblink/index.html [R=303,L]
