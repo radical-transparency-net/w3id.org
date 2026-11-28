@@ -12,11 +12,12 @@ Permanent identifiers for the **Radical Transparency Network** (open science & s
 
 | Identifier | Accept / Extension | Status | Target |
 | :--- | :--- | :--- | :--- |
-| `https://w3id.org/rt/ns/weblink` | `text/turtle` or `.ttl` | `303` | `https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.ttl` |
-| `https://w3id.org/rt/ns/weblink` | `application/ld+json` or `.jsonld` | `303` | `https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.jsonld` |
-| `https://w3id.org/rt/ns/weblink` | `application/linkset+json` or `.linkset.json` | `303` | `https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.linkset.json` |
-| `https://w3id.org/rt/ns/weblink` | `application/linkset` or `.linkset` | `303` | `https://radical-transparency-net.github.io/semantic-assets/weblink/weblink.linkset` |
-| `https://w3id.org/rt/ns/weblink` | `text/html` / default or `.html` | `303` | `https://radical-transparency-net.github.io/semantic-assets/weblink/index.html` |
+| `https://w3id.org/rt/ns/weblink` | `text/turtle` or `.ttl` | `303` | `https://radical-transparency.net/semantic-assets/weblink/weblink.ttl` |
+| `https://w3id.org/rt/ns/weblink` | `application/ld+json` or `.jsonld` | `303` | `https://radical-transparency.net/semantic-assets/weblink/weblink.jsonld` |
+| `https://w3id.org/Rt/ns/weblink.context.jsonld` | `.context.jsonld` | `303` | `https://radical-transparency.net/semantic-assets/weblink/weblink.context.jsonld` |
+| `https://w3id.org/rt/ns/weblink` | `application/linkset+json` or `.linkset.json` | `303` | `https://radical-transparency.net/semantic-assets/weblink/weblink.linkset.json` |
+| `https://w3id.org/rt/ns/weblink` | `application/linkset` or `.linkset` | `303` | `https://radical-transparency.net/semantic-assets/weblink/weblink.linkset` |
+| `https://w3id.org/rt/ns/weblink` | `text/html` / default or `.html` | `303` | `https://radical-transparency.net/semantic-assets/weblink/index.html` |
 
 All `/rt/ns/weblink` responses also expose `Link` headers pointing to the RFC 9264 variant-menu linksets (`application/linkset+json` and `application/linkset`) in accordance with Radical Transparency pattern **RT-P03**.
 
